@@ -1,6 +1,7 @@
-from solver import solve_sudoku
-from gui import start_gui
+from mainmenu import start_main_menu
+
+import sys
 
 if __name__ == "__main__":
-    start_gui()
+    start_main_menu()
     pass
