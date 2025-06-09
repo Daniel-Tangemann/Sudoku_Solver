@@ -92,14 +92,6 @@ def start_gui(player_name, mode="manual", on_return=None):
                     entry.bind("<Right>", lambda e, r=row, c=col: focus_cell(r, c + 1))
                     entry.bind("<KeyRelease>", lambda e, r=row, c=col: on_key_release(e, r, c))
 
-    # Wenn Modus random, fülle das Grid direkt vor
-    if mode == "random":
-        puzzle = generate_puzzle(utils.MODE)
-        for row in range(9):
-            for col in range(9):
-                if puzzle[row][col] != 0:
-                    entries[row][col].insert(0, str(puzzle[row][col]))
-
     def solve():
         puzzle = []
         for row in range(9):
@@ -127,6 +119,15 @@ def start_gui(player_name, mode="manual", on_return=None):
             set_status("Sudoku erfolgreich gelöst!", "green")
         else:
             set_status("Keine Lösung möglich!", "red")
+
+    # Wenn Modus random, fülle das Grid direkt vor
+    if mode == "random":
+        canvas.create_window(125, 560, window=tk.Button(root, text="Lösen", command=solve))
+        puzzle = generate_puzzle(utils.MODE)
+        for row in range(9):
+            for col in range(9):
+                if puzzle[row][col] != 0:
+                    entries[row][col].insert(0, str(puzzle[row][col]))
 
     def restart():
         for row in range(9):
