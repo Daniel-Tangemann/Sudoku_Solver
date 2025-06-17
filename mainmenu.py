@@ -70,10 +70,10 @@ def start_main_menu():
     btn2 = tk.Button(new_root, text="Eigenes Puzzle eingeben", command=start_user_input_mode)
     btn3 = tk.Button(new_root, text="Highscores anzeigen", command=show_highscores)
 
-    canvas.create_text(250, 220, text="Puzzles lösen lassen:", font=("Arial", 14), fill="black")
+    canvas.create_text(250, 220, text="Puzzles selber lösen:", font=("Arial", 14), fill="black")
     canvas.create_window(250, 250, window=btn1)
 
-    canvas.create_text(250, 290, text="Eingabe-Modus:", font=("Arial", 14), fill="black")
+    canvas.create_text(250, 290, text="Puzzles lösen lassen:", font=("Arial", 14), fill="black")
     canvas.create_window(250, 320, window=btn2)
 
     canvas.create_text(250, 360, text="Highscores:", font=("Arial", 14), fill="black")
