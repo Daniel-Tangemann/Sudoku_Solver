@@ -68,6 +68,7 @@ def remove_cells(board, clues):
 
 def generate_puzzle(difficulty="normal"):
     difficulty_map = {
+        "noob": 54,
         "easy": random.randint(36, 45),
         "normal": random.randint(30, 35),
         "hard": random.randint(24, 29),

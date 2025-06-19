@@ -34,7 +34,7 @@ def start_main_menu():
     canvas.create_window(250, 110, window=name_entry)
 
     canvas.create_text(250, 150, text="Schwierigkeitsgrad:", font=("Arial", 14), fill="black")
-    difficulty_menu = tk.OptionMenu(new_root, difficulty_var, "easy", "normal", "hard", "god")
+    difficulty_menu = tk.OptionMenu(new_root, difficulty_var, "noob", "easy", "normal", "hard", "god")
     difficulty_menu.config(font=("Arial", 10))
     canvas.create_window(250, 180, window=difficulty_menu)
 

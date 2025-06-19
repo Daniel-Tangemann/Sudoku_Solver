@@ -73,6 +73,30 @@ def start_gui(player_name, mode="manual", on_return=None):
                 status_label.config(fg="blue")
             root.after(reset_after, reset_status)
 
+    # Rasterlinien für 3x3 Blöcke
+    GRID_OFFSET_X = 108
+    GRID_OFFSET_Y = 132
+    CELL_SIZE = 35
+
+    for i in range(10):
+        width = 3 if i % 3 == 0 else 1
+        # Vertikale Linien
+        canvas.create_line(
+            GRID_OFFSET_X + i * CELL_SIZE,
+            GRID_OFFSET_Y,
+            GRID_OFFSET_X + i * CELL_SIZE,
+            GRID_OFFSET_Y + 9 * CELL_SIZE,
+            width=width
+        )
+        # Horizontale Linien
+        canvas.create_line(
+            GRID_OFFSET_X,
+            GRID_OFFSET_Y + i * CELL_SIZE,
+            GRID_OFFSET_X + 9 * CELL_SIZE,
+            GRID_OFFSET_Y + i * CELL_SIZE,
+            width=width
+        )
+
     # Sudoku-Grid zeichnen
     for block_row in range(3):
         for block_col in range(3):
@@ -82,8 +106,8 @@ def start_gui(player_name, mode="manual", on_return=None):
                     col = block_col * 3 + inner_col
                     entry = tk.Entry(root, width=2, font=("Arial", 18), justify="center",
                                      validate='key', validatecommand=vcmd, bg="white")
-                    x = 75 + col * 30
-                    y = 70 + row * 30
+                    x = 125 + col * CELL_SIZE
+                    y = 150 + row * CELL_SIZE
                     canvas.create_window(x, y, window=entry)
                     entries[row][col] = entry
                     entry.bind("<Up>", lambda e, r=row, c=col: focus_cell(r - 1, c))
